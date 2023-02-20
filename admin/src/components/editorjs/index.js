@@ -1,54 +1,83 @@
-import React, { useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import EditorJs from 'react-editor-js';
-import requiredTools from './requiredTools';
-import customTools from '../../config/customTools';
+import React, { useState, useCallback, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
+import EditorJs from "react-editor-js";
+import requiredTools from "./requiredTools";
+import customTools from "../../config/customTools";
 
-import MediaLibAdapter from '../medialib/adapter'
-import MediaLibComponent from '../medialib/component';
-import {changeFunc, getToggleFunc} from '../medialib/utils';
+import MediaLibAdapter from "../medialib/adapter";
+import MediaLibComponent from "../medialib/component";
+import { changeFunc, getToggleFunc } from "../medialib/utils";
+import { darkModeStyles } from "./darkMode.styles";
 
 const Editor = ({ onChange, name, value }) => {
-
+  const isUsingDarkMode = window.localStorage?.STRAPI_THEME === "dark";
   const [editorInstance, setEditorInstance] = useState();
   const [mediaLibBlockIndex, setMediaLibBlockIndex] = useState(-1);
   const [isMediaLibOpen, setIsMediaLibOpen] = useState(false);
+  const stylesheetRef = useRef(null);
 
-  const mediaLibToggleFunc = useCallback(getToggleFunc({
-    openStateSetter: setIsMediaLibOpen,
-    indexStateSetter: setMediaLibBlockIndex
-  }), []);
+  const mediaLibToggleFunc = useCallback(
+    getToggleFunc({
+      openStateSetter: setIsMediaLibOpen,
+      indexStateSetter: setMediaLibBlockIndex,
+    }),
+    []
+  );
 
-  const handleMediaLibChange = useCallback((data) => {
-    changeFunc({
+  const handleMediaLibChange = useCallback(
+    (data) => {
+      changeFunc({
         indexStateSetter: setMediaLibBlockIndex,
         data,
         index: mediaLibBlockIndex,
-        editor: editorInstance
-    });
-    mediaLibToggleFunc();
-  }, [mediaLibBlockIndex, editorInstance]);
+        editor: editorInstance,
+      });
+      mediaLibToggleFunc();
+    },
+    [mediaLibBlockIndex, editorInstance]
+  );
 
   const customImageTool = {
     mediaLib: {
       class: MediaLibAdapter,
       config: {
-        mediaLibToggleFunc
-      }
+        mediaLibToggleFunc,
+      },
+    },
+  };
+
+  useEffect(() => {
+    if (isUsingDarkMode) {
+      const stylesheet = document.createElement("style");
+      stylesheetRef.current = stylesheet;
+      stylesheet.innerHTML = darkModeStyles;
+      document.head.appendChild(stylesheet);
     }
-  }
+
+    return () => {
+      if (stylesheetRef.current) {
+        stylesheetRef.current.parentNode.removeChild(stylesheetRef.current);
+      }
+    };
+  }, [stylesheetRef, isUsingDarkMode]);
 
   return (
     <>
-      <div style={{ border: `1px solid rgb(227, 233, 243)`, borderRadius: `2px`, marginTop: `4px` }}>
+      <div
+        style={{
+          border: `1px solid rgb(227, 233, 243)`,
+          borderRadius: `2px`,
+          marginTop: `4px`,
+        }}
+      >
         <EditorJs
           // data={JSON.parse(value)}
           // enableReInitialize={true}
           onReady={(api) => {
-            if(value && JSON.parse(value).blocks.length) {
-              api.blocks.render(JSON.parse(value))
+            if (value && JSON.parse(value).blocks.length) {
+              api.blocks.render(JSON.parse(value));
             }
-            document.querySelector('[data-tool="image"]').remove()
+            document.querySelector('[data-tool="image"]').remove();
           }}
           onChange={(api, newData) => {
             if (!newData.blocks.length) {
@@ -58,8 +87,8 @@ const Editor = ({ onChange, name, value }) => {
               onChange({ target: { name, value: JSON.stringify(newData) } });
             }
           }}
-          tools={{...requiredTools, ...customTools, ...customImageTool}}
-          instanceRef={instance => setEditorInstance(instance)}
+          tools={{ ...requiredTools, ...customTools, ...customImageTool }}
+          instanceRef={(instance) => setEditorInstance(instance)}
         />
       </div>
       <MediaLibComponent
