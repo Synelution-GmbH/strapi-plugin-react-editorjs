@@ -60,7 +60,7 @@ const customTools = {
         "169179",
         "E67E23",
       ],
-      defaultColor: "#222222",
+      defaultColor: "#50BEC8",
       type: "text",
       customPicker: true, // add a button to allow selecting any colour
     },
