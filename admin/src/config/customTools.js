@@ -18,15 +18,27 @@ import AlignmentTuneTool from "editorjs-text-alignment-blocktune";
 import ColorPlugin from "editorjs-text-color-plugin";
 import ChangeCase from "editorjs-change-case";
 
+class CustomHeader extends Header {
+  static get sanitize() {
+    return {
+      level: false,
+      text: {
+        br: true,
+      },
+    };
+  }
+}
+
 const customTools = {
   header: {
-    class: Header,
+    class: CustomHeader,
     inlineToolbar: true,
     tunes: ["anyTuneName"],
   },
   paragraph: {
     class: Paragraph,
     inlineToolbar: true,
+    placeholder: "Begin typing..",
     tunes: ["anyTuneName"],
   },
   anyTuneName: {
