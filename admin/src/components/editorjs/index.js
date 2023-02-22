@@ -73,6 +73,7 @@ const Editor = ({ onChange, name, value }) => {
         <EditorJs
           // data={JSON.parse(value)}
           // enableReInitialize={true}
+          minHeight={60}
           onReady={(api) => {
             if (value && JSON.parse(value).blocks.length) {
               api.blocks.render(JSON.parse(value));
