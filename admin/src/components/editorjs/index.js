@@ -78,15 +78,19 @@ const Editor = ({ onChange, name, value }) => {
             if (value && JSON.parse(value).blocks.length) {
               api.blocks.render(JSON.parse(value));
             }
-            document.querySelector('[data-tool="image"]').remove();
+            if (document.querySelector('[data-tool="image"]'))
+              document.querySelector('[data-tool="image"]').remove();
           }}
           onChange={(api, newData) => {
-            if (!newData.blocks.length) {
-              newData = null;
-              onChange({ target: { name, value: newData } });
-            } else {
-              onChange({ target: { name, value: JSON.stringify(newData) } });
-            }
+            // if (!newData.blocks.length) {
+            //   newData = null;
+            //   onChange({ target: { name, value: newData } });
+            // } else {
+            //   onChange({ target: { name, value: JSON.stringify(newData) } });
+            // }
+            api.saver.save().then((res) => {
+              onChange({ target: { name, value: JSON.stringify(res) } });
+            });
           }}
           tools={{ ...requiredTools, ...customTools, ...customImageTool }}
           instanceRef={(instance) => setEditorInstance(instance)}
