@@ -68,6 +68,7 @@ const Editor = ({ onChange, name, value }) => {
           border: `1px solid rgb(227, 233, 243)`,
           borderRadius: `2px`,
           marginTop: `4px`,
+          whiteSpace: `pre-wrap`,
         }}
       >
         <EditorJs
