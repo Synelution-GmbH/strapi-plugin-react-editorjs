@@ -31,7 +31,7 @@
     "classnames": "^2.3.1",
     "editorjs-change-case": "^0.0.3",
     "editorjs-text-alignment-blocktune": "^1.0.3",
-    "editorjs-text-color-plugin": "^2.0.2",
+    "editorjs-text-color-plugin": "^2.0.4",
     "get-file-object-from-local-path": "1.0.2",
     "open-graph-scraper": "4.9.2",
     "react-editor-js": "1.10.0"
@@ -64,7 +64,7 @@
     }
   ],
   "engines": {
-    "node": ">=10.16.0 <=16.x.x",
+    "node": ">=10.16.0 <=18.x.x",
     "npm": ">=6.0.0"
   },
   "repository": {

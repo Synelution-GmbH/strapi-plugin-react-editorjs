@@ -1336,10 +1336,10 @@ editorjs-text-alignment-blocktune@^1.0.3:
   resolved "https://registry.yarnpkg.com/editorjs-text-alignment-blocktune/-/editorjs-text-alignment-blocktune-1.0.3.tgz#7942fe2d3fbdbd7fcfd10fbb9b341c97ec3eb84f"
   integrity sha512-DAJ2LJP+WjETvU4lVOJCqZ1kZkKHp0GkujkqZgza9DRv7bO46m1M/s2d5Ba5hPFdmqk1vA/ci++MQXgWD7mWYw==
 
-editorjs-text-color-plugin@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/editorjs-text-color-plugin/-/editorjs-text-color-plugin-2.0.2.tgz#235630e460c843f01eb1131fcc789eb13971eb03"
-  integrity sha512-umiv8Yc4NjEg1O5dJFDjOQQ31mLKCdTSdVHVuPNmOKdbl+OIi5/DB9P1SRG+zr+sTV0QHWa8x0hZbyqY92DPhw==
+editorjs-text-color-plugin@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/editorjs-text-color-plugin/-/editorjs-text-color-plugin-2.0.4.tgz#6e143c9507abe59da54ca0f8d6f9ffb14447c29d"
+  integrity sha512-QpibTkOxs3ndlKNOLT8ZlC4ktc3/eKIajiLO0Jm/hh9AJug/CrM1/rAvHy+ldfUKavbWeI+YZvgjad0YTyoyGw==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
