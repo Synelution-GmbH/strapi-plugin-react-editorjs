@@ -1,22 +1,22 @@
-import PluginId from "../pluginId";
+import PluginId from '../pluginId';
 
-import Embed from "@editorjs/embed";
-import Table from "@editorjs/table";
-import List from "@editorjs/list";
-import Warning from "@editorjs/warning";
-import Code from "@editorjs/code";
-import LinkTool from "@editorjs/link";
-import Raw from "@editorjs/raw";
-import Header from "@editorjs/header";
-import Paragraph from "@editorjs/paragraph";
-import Quote from "@editorjs/quote";
-import Marker from "@editorjs/marker";
-import CheckList from "@editorjs/checklist";
-import Delimiter from "@editorjs/delimiter";
-import InlineCode from "@editorjs/inline-code";
-import AlignmentTuneTool from "editorjs-text-alignment-blocktune";
-import ColorPlugin from "editorjs-text-color-plugin";
-import ChangeCase from "editorjs-change-case";
+import Embed from '@editorjs/embed';
+import Table from '@editorjs/table';
+import List from '@editorjs/list';
+import Warning from '@editorjs/warning';
+import Code from '@editorjs/code';
+import LinkTool from '@editorjs/link';
+import Raw from '@editorjs/raw';
+import Header from '@editorjs/header';
+import Paragraph from '@editorjs/paragraph';
+import Quote from '@editorjs/quote';
+import Marker from '@editorjs/marker';
+import CheckList from '@editorjs/checklist';
+import Delimiter from '@editorjs/delimiter';
+import InlineCode from '@editorjs/inline-code';
+import AlignmentTuneTool from 'editorjs-text-alignment-blocktune';
+import ColorPlugin from 'editorjs-text-color-plugin';
+import ChangeCase from 'editorjs-change-case';
 
 class CustomHeader extends Header {
   static get sanitize() {
@@ -33,20 +33,27 @@ const customTools = {
   header: {
     class: CustomHeader,
     inlineToolbar: true,
-    tunes: ["anyTuneName"],
+    tunes: ['anyTuneName'],
   },
   paragraph: {
     class: Paragraph,
     inlineToolbar: true,
-    placeholder: "Begin typing..",
-    tunes: ["anyTuneName"],
+    placeholder: 'Begin typing..',
+    tunes: ['anyTuneName'],
+  },
+  list: {
+    class: List,
+    inlineToolbar: true,
+    config: {
+      defaultStyle: 'unordered',
+    },
   },
   anyTuneName: {
     class: AlignmentTuneTool,
     config: {
-      default: "left",
+      default: 'left',
       blocks: {
-        header: "left",
+        header: 'left',
       },
     },
   },
@@ -57,23 +64,23 @@ const customTools = {
     class: ColorPlugin, // if load from CDN, please try: window.ColorPlugin
     config: {
       colorCollections: [
-        "#50BEC8",
-        "#1B7780",
-        "#222222",
-        "#464646",
-        "#e1e1e1",
-        "#FFFFFF",
-        "#000000",
-        "#2DC26B",
-        "#F1C40F",
-        "#E03E2D",
-        "#B96AD9",
-        "3598DB",
-        "169179",
-        "E67E23",
+        '#50BEC8',
+        '#1B7780',
+        '#222222',
+        '#464646',
+        '#e1e1e1',
+        '#FFFFFF',
+        '#000000',
+        '#2DC26B',
+        '#F1C40F',
+        '#E03E2D',
+        '#B96AD9',
+        '3598DB',
+        '169179',
+        'E67E23',
       ],
-      defaultColor: "#50BEC8",
-      type: "text",
+      defaultColor: '#50BEC8',
+      type: 'text',
       customPicker: true, // add a button to allow selecting any colour
     },
   },
