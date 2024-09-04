@@ -11,11 +11,10 @@ import Header from '@editorjs/header';
 import Paragraph from '@editorjs/paragraph';
 import Quote from '@editorjs/quote';
 import Marker from '@editorjs/marker';
-import CheckList from '@editorjs/checklist';
 import Delimiter from '@editorjs/delimiter';
 import InlineCode from '@editorjs/inline-code';
 import AlignmentTuneTool from 'editorjs-text-alignment-blocktune';
-import ColorPlugin from 'editorjs-text-color-plugin';
+import ColorPlugin from '../react-text-color-plugin';
 import ChangeCase from 'editorjs-change-case';
 
 class CustomHeader extends Header {
@@ -132,5 +131,16 @@ const customTools = {
   // delimiter: Delimiter,
   // inlineCode: InlineCode,
 };
+
+const popover = customElements.get('xy-popover');
+console.log(popover.shadowRoot);
+
+// var popoverSheet = new CSSStyleSheet();
+// popoverSheet.replaceSync(`:host { display: inline-flex; }`);
+// popover.shadowRoot.adoptedStyleSheets = [popoverSheet];
+
+const popcon = customElements.get('xy-popcon');
+const button = customElements.get('xy-button');
+const buttonGroup = customElements.get('xy-button-group');
 
 export default customTools;

@@ -1,0 +1,18 @@
+xy-color-picker {
+  display: inline-flex !important;
+}
+
+.cdx-list {
+  padding-left: 26px;
+}
+
+.ce-inline-toolbar {
+  .ce-inline-tool {
+    padding: 0 2px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

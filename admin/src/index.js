@@ -2,6 +2,8 @@ import pluginPkg from '../../package.json';
 import Wysiwyg from './components/Wysiwyg';
 import pluginId from './pluginId';
 
+import './scss/custom.min.css';
+
 export default {
   register(app) {
     // executes as soon as the plugin is loaded
@@ -14,7 +16,7 @@ export default {
       icon: pluginPkg.strapi.icon,
       intlLabel: {
         id: pluginId,
-        defaultMessage: pluginId
+        defaultMessage: pluginId,
       },
       id: pluginId,
       initializer: () => null,
