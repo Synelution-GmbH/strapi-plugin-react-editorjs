@@ -1,6 +1,7 @@
 import pluginPkg from '../../package.json';
 import Wysiwyg from './components/Wysiwyg';
 import pluginId from './pluginId';
+import './scss/custom.min.css';
 
 export default {
   register(app) {
