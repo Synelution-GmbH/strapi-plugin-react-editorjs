@@ -15,7 +15,7 @@ import CheckList from '@editorjs/checklist';
 import Delimiter from '@editorjs/delimiter';
 import InlineCode from '@editorjs/inline-code';
 import AlignmentTuneTool from 'editorjs-text-alignment-blocktune';
-import ColorPlugin from 'editorjs-text-color-plugin';
+import ColorPlugin from '../editorjs-text-color-plugin';
 import ChangeCase from 'editorjs-change-case';
 
 class CustomHeader extends Header {
@@ -48,6 +48,13 @@ const customTools = {
       defaultStyle: 'unordered',
     },
   },
+  // listOrdered: {
+  //   class: List,
+  //   inlineToolbar: true,
+  //   config: {
+  //     defaultStyle: 'ordered',
+  //   },
+  // },
   anyTuneName: {
     class: AlignmentTuneTool,
     config: {
